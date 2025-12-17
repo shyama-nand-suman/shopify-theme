@@ -1,0 +1,43 @@
+{% schema %}
+{
+  "name": "The Next Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The next"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Sub text",
+      "default": "We bring you powerful advantages to navigate your digital transformation"
+    }
+  ],
+  "presets": [
+    {
+      "name": "The Next"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="the-next-section">
+  <div class="the-next-inner">
+
+    <!-- decorative lines -->
+    <div class="the-next-lines">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <h2 class="the-next-heading">
+      {{ section.settings.heading }}
+    </h2>
+
+    <p class="the-next-sub">
+      {{ section.settings.subtext }}
+    </p>
+
+  </div>
+</section>

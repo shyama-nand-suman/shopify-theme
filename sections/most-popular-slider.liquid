@@ -1,0 +1,217 @@
+{% schema %}
+{
+  "name": "Most Popular",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Most Popular"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "interval",
+      "label": "Autoplay interval (sec)",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Popular Item",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "select",
+          "id": "type",
+          "label": "Type",
+          "default": "Article",
+          "options": [
+            { "value": "Article", "label": "Article" },
+            { "value": "Video", "label": "Video" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "desc", "label": "Description" },
+        { "type": "text", "id": "meta", "label": "Date & time", "default": "Nov 18, 2025 | 9 min" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Most Popular",
+      "blocks": [
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section class="popular">
+  <h2 class="popular-title">{{ section.settings.heading }}</h2>
+
+  <div class="popular-wrap">
+    <button class="nav prev">‹</button>
+
+    <div class="popular-slider" id="popularSlider">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class="popular-card" {{ block.shopify_attributes }}>
+          <div class="img-wrap">
+            <img src="{{ block.settings.image | image_url: width: 900 }}" alt="{{ block.settings.title }}">
+            {% if block.settings.type == 'Video' %}
+              <span class="video-icon">▶</span>
+            {% endif %}
+          </div>
+
+          <div class="card-body">
+            <span class="type">{{ block.settings.type }}</span>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.desc }}</p>
+            <span class="meta">{{ block.settings.meta }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    <button class="nav next">›</button>
+  </div>
+
+  <div class="dots">
+    {% for block in section.blocks %}
+      <span class="dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.popular{max-width:1200px;margin:80px auto;padding:0 20px}
+.popular-title{font-size:36px;margin-bottom:30px}
+
+/* WRAP */
+.popular-wrap{position:relative}
+.popular-slider{
+  display:flex;
+  gap:24px;
+  overflow:hidden;
+  scroll-behavior:smooth;
+}
+
+/* CARD */
+.popular-card{
+  flex:0 0 calc(33.333% - 16px);
+  text-decoration:none;
+  color:#000;
+  transition:transform .3s ease;
+}
+.popular-card:hover{transform:translateY(-6px)}
+
+/* IMAGE */
+.img-wrap{position:relative;overflow:hidden}
+.img-wrap img{
+  width:100%;
+  display:block;
+  transition:transform .5s ease;
+}
+.popular-card:hover img{transform:scale(1.1)}
+.video-icon{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  color:#fff;
+  background:rgba(0,0,0,.35);
+}
+
+/* CONTENT */
+.card-body{padding:16px 0}
+.type{font-size:12px;color:#0070f3;font-weight:600}
+.card-body h3{font-size:18px;margin:8px 0}
+.card-body p{font-size:14px;color:#555}
+.meta{font-size:12px;color:#777}
+
+/* NAV */
+.nav{
+  position:absolute;
+  top:40%;
+  transform:translateY(-50%);
+  background:#000;
+  color:#fff;
+  border:none;
+  width:42px;
+  height:42px;
+  cursor:pointer;
+  z-index:2;
+}
+.nav.prev{left:-20px}
+.nav.next{right:-20px}
+
+/* DOTS */
+.dots{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ccc;
+  cursor:pointer;
+}
+.dot.active{background:#000}
+
+/* MOBILE */
+@media(max-width:900px){
+  .popular-card{flex:0 0 85%}
+  .nav{display:none}
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const slider=document.getElementById("popularSlider");
+  const dots=document.querySelectorAll(".dot");
+  const cards=document.querySelectorAll(".popular-card");
+  let index=0;
+  const visible=3;
+  const autoplay={{ section.settings.autoplay }};
+  const interval={{ section.settings.interval }}*1000;
+
+  function go(i){
+    index=i;
+    slider.scrollTo({
+      left:cards[0].offsetWidth*i,
+      behavior:"smooth"
+    });
+    dots.forEach(d=>d.classList.remove("active"));
+    dots[i]?.classList.add("active");
+  }
+
+  document.querySelector(".next").onclick=()=>go((index+1)%dots.length);
+  document.querySelector(".prev").onclick=()=>go((index-1+dots.length)%dots.length);
+  dots.forEach(d=>d.onclick=()=>go(+d.dataset.index));
+
+  if(autoplay){
+    setInterval(()=>go((index+1)%dots.length),interval);
+  }
+});
+</script>

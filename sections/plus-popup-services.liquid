@@ -1,0 +1,80 @@
+{% schema %}
+{
+  "name": "Plus Popup Services",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Top Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Service offerings"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg",
+          "label": "Popup Background Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Plus Popup Services",
+      "blocks": [
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section class="plus-bar">
+  <div class="plus-grid">
+    {% for block in section.blocks %}
+      <div class="plus-item" data-popup="popup-{{ forloop.index }}">
+        <h3>{{ block.settings.title }}</h3>
+        <div class="plus-icon">+</div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% for block in section.blocks %}
+<div class="popup-overlay" id="popup-{{ forloop.index }}">
+  <div class="popup-box"
+    style="background-image:url('https://cdn.shopify.com/s/files/1/0784/7388/7973/files/digital_img-tab.webp?v=1765628377');">
+
+    <button class="popup-close">×</button>
+
+    <div class="popup-content">
+      <div class="popup-left">
+        <h1>Bringing data, insights and digital experiences</h1>
+        <p>
+          Imagine a machine with a mind of its own – powered by analytics,
+          AI and immersive technologies to transform experiences.
+        </p>
+        <a href="#" class="popup-btn">Learn more</a>
+      </div>
+
+      <div class="popup-right">
+        <h3>Explore services</h3>
+        <ul>
+          <li>Blockchain</li>
+          <li>Infosys Cobalt</li>
+          <li>Data analytics</li>
+          <li>Mainframe modernization</li>
+        </ul>
+        <a href="#" class="popup-outline">View all</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endfor %}

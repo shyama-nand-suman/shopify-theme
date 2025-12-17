@@ -1,0 +1,82 @@
+{% schema %}
+{
+  "name": "Image Hover Grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "big",
+      "name": "Big Image (Left)",
+      "limit": 1,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Experience" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Design-led transformation from brand to experience." }
+      ]
+    },
+    {
+      "type": "small",
+      "name": "Small Image (Right)",
+      "limit": 4,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Insight" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Hover Grid",
+      "blocks": [
+        { "type": "big" },
+        { "type": "small" },
+        { "type": "small" },
+        { "type": "small" },
+        { "type": "small" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section class="img-hover-grid">
+  <div class="img-grid">
+
+    <!-- LEFT BIG IMAGE -->
+    {% for block in section.blocks %}
+      {% if block.type == 'big' %}
+        <div class="img-card big">
+          <img
+            src="{{ block.settings.image | image_url: width: 1200 }}"
+            alt="{{ block.settings.title }}"
+            width="1200"
+            height="800"
+          >
+          <div class="overlay">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    <!-- RIGHT SMALL IMAGES -->
+    <div class="right-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'small' %}
+          <div class="img-card small">
+            <img
+              src="{{ block.settings.image | image_url: width: 600 }}"
+              alt="{{ block.settings.title }}"
+              width="600"
+              height="400"
+            >
+            <div class="overlay center">
+              <h3>{{ block.settings.title }}</h3>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

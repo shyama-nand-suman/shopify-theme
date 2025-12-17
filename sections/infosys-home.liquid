@@ -1,0 +1,207 @@
+{% schema %}
+{
+  "name": "Infosys Home (Custom)",
+  "settings": [],
+  "blocks": [],
+  "presets": [{ "name": "Infosys Home" }]
+}
+{% endschema %}
+
+<div class="infosys-home-section">
+  <!-- TOP NAVBAR (kept inside section for demo; header-group should normally handle main header) -->
+  <nav class="custom-top-navbar" id="mainNav">
+    <div class="navbar-container">
+      <div class="nav-logo">
+        <a href="{{ shop.url }}">
+          <img 
+            src="https://cdn.shopify.com/s/files/1/0784/7388/7973/files/iga-swiatek-mobimg_91701cfb-90d1-435f-b1f7-9cfc8cbb1c71.avif?v=1765518562"
+            alt="{{ shop.name }}"
+            width="130"
+            height="55"
+            loading="eager"
+          >
+        </a>
+      </div>
+
+      <ul class="nav-menu">
+        <li><a href="#">Navigate your next</a></li>
+        <li><a href="#">Infosys Knowledge Institute</a></li>
+        <li><a href="#">Investors</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+
+      <div class="nav-icons">
+        <button class="icon-btn" id="searchToggle" aria-label="Search">🔍</button>
+        <button class="icon-btn" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+      <button class="close-mobile" id="closeMenu" aria-label="Close menu">✕</button>
+      <ul>
+        <li><a href="#">Navigate your next</a></li>
+        <li><a href="#">Infosys Knowledge Institute</a></li>
+        <li><a href="#">Investors</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LEFT STICKY NAV -->
+  <div class="left-sticky-nav" aria-hidden="false">
+    <ul>
+      <li class="active" data-target="hero-slider">Navigate your next</li>
+      <li data-target="core-section">Core Capabilities</li>
+      <li data-target="dom-section">Digital Operating Model</li>
+      <li data-target="talent-section">Talent Transformations</li>
+    </ul>
+  </div>
+
+  <!-- HERO SLIDER -->
+  <div class="hero-slider" id="hero-slider" role="region" aria-label="Main hero">
+    <!-- Slide 1 -->
+    <div class="slide active" style="background-image: url('https://cdn.shopify.com/s/files/1/0784/7388/7973/files/iga-swiatek-mobimg_91701cfb-90d1-435f-b1f7-9cfc8cbb1c71.avif?v=1765518562');" role="img" aria-label="Slide 1">
+      <div class="infosys-overlay">
+        <div class="left-lines"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="hero-left-content reveal-left">
+          <h1 class="hero-heading">CHAMPIONS EVOLVE.</h1>
+          <p class="hero-sub">DIGITAL-FIRST | CLOUD-FIRST | AI-FIRST</p>
+          <a href="#" class="hero-btn">KNOW MORE</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" style="background-image: url('https://cdn.shopify.com/s/files/1/0784/7388/7973/files/global-capability-centers-lead.avif?v=1765517503');" role="img" aria-label="Slide 2">
+      <div class="infosys-overlay">
+        <div class="left-lines"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="hero-left-content reveal-left">
+          <h1 class="hero-heading">TRANSFORM YOUR ENTERPRISE.</h1>
+          <p class="hero-sub">MODERNIZE | INNOVATE | SCALE</p>
+          <a href="#" class="hero-btn">DISCOVER</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" style="background-image: url('https://cdn.shopify.com/s/files/1/0784/7388/7973/files/rapidly-cyber-attack_90d68784-1f9c-4047-a6cb-7c210f66859d.avif?v=1765525565');" role="img" aria-label="Slide 3">
+      <div class="infosys-overlay">
+        <div class="left-lines"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="hero-left-content reveal-left">
+          <h1 class="hero-heading">FUTURE ACCELERATED.</h1>
+          <p class="hero-sub">AI-FIRST | NEXT-GEN | AUTOMATION</p>
+          <a href="#" class="hero-btn">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- dots -->
+    <div class="slider-dots" role="tablist" aria-label="Slide controls">
+      <button class="dot active" type="button" aria-label="Show slide 1"></button>
+      <button class="dot" type="button" aria-label="Show slide 2"></button>
+      <button class="dot" type="button" aria-label="Show slide 3"></button>
+    </div>
+  </div>
+
+  <!-- CORE / DOM / TALENT sections follow -->
+  <section id="core-section" class="core-section reveal">
+    <div class="core-left-lines reveal-left">
+      <span>Navigate<br> your next</span>
+      <div class="lines"><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
+    <div class="core-content reveal">
+      <h2 class="core-heading">Digital Core Capabilities</h2>
+      <p class="core-subtitle">Build vital capabilities to deliver digital outcomes.</p>
+      <a href="#" class="core-btn">EXPLORE</a>
+
+      <div class="core-case-title">CASE STUDIES</div>
+
+      <div class="core-grid">
+        <div class="core-item reveal-left">
+          <h3>Pfizer’s AI-powered transformation journey</h3>
+          <a href="#" class="core-view">VIEW</a>
+        </div>
+
+        <div class="core-item reveal-right">
+          <h3>A government contributing to the joy of parenting</h3>
+          <a href="#" class="core-view">VIEW</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="core-images reveal-right">
+      <img src="https://cdn.shopify.com/s/files/1/0784/7388/7973/files/digital-capabilities-lead-mob.webp?v=1765526733" alt="decor" class="butterfly" width="300" height="300">
+    </div>
+  </section>
+
+  <section id="dom-section" class="dom-section reveal">
+    <div class="dom-left reveal-left">
+      <div class="dom-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      <span class="dom-label">Core<br>Capabilities</span>
+      <div class="dom-lines"><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
+    <div class="dom-center-img reveal">
+      <img src="https://cdn.shopify.com/s/files/1/0784/7388/7973/files/digital-operating-models-lead-mob.webp?v=1765527077" alt="branch" class="dom-branch" width="420" height="420">
+    </div>
+
+    <div class="dom-content reveal-right">
+      <h2 class="dom-heading">Digital Operating Model</h2>
+      <p class="dom-sub">For the AI-first Enterprise</p>
+      <a href="#" class="dom-btn">EXPLORE</a>
+
+      <div class="dom-case-grid">
+        <div class="dom-case reveal-left">
+          <span class="dom-case-title">CLIENT SPEAK</span>
+          <h3>How BASF achieved faster time-to-market using DevOps</h3>
+          <a href="#" class="dom-view">VIEW</a>
+        </div>
+
+        <div class="dom-case reveal-right">
+          <span class="dom-case-title">CLIENT TESTIMONIAL</span>
+          <h3>NN Life Insurance Cloud & Agile Transformation</h3>
+          <a href="#" class="dom-view">VIEW</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="talent-section" class="talent-section reveal">
+    <div class="talent-left reveal-left">
+      <div class="talent-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      <span class="talent-label">Talent<br> Transformations</span>
+      <div class="talent-lines"><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
+    <div class="talent-content-wrapper">
+      <div class="talent-content reveal">
+        <h2 class="talent-heading">Empowering Talent<br>Transformations</h2>
+        <p class="talent-sub">Embrace the talent revolution to remain future-ready.</p>
+        <a href="#" class="talent-btn">EXPLORE</a>
+
+        <div class="talent-sub-title">INSIGHTS</div>
+
+        <div class="talent-grid">
+          <div class="talent-item reveal-left">
+            <h3>Improving productivity with digital workforce management</h3>
+            <a href="#" class="talent-view">VIEW</a>
+          </div>
+
+          <div class="talent-item reveal-right">
+            <h3>Developing talent for our digital future</h3>
+            <a href="#" class="talent-view">VIEW</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="talent-images reveal-right">
+        <img src="https://cdn.shopify.com/s/files/1/0784/7388/7973/files/talent-transformations-lead-mob.webp?v=1765527325" alt="duck" class="duck" width="320" height="320">
+      </div>
+    </div>
+  </section>
+
+</div>

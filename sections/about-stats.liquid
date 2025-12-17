@@ -1,0 +1,166 @@
+{% schema %}
+{
+  "name": "About Stats",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "About us"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sub Heading",
+      "default": "A global leader in next-generation digital services and consulting"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 Value",
+      "default": "59"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_text",
+      "label": "Stat 1 Text",
+      "default": "countries where we have trusting clients"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 Value",
+      "default": "US$ 19.7"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_text",
+      "label": "Stat 2 Text",
+      "default": "billion total revenue (LTM)"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Stat 3 Value",
+      "default": "24+"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_text",
+      "label": "Stat 3 Text",
+      "default": "million training (hours) conducted for employees, globally"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Stats"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="about-stats">
+  <div class="about-head">
+    <div class="about-dots">|||||||</div>
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.subtitle }}</p>
+  </div>
+
+  <div class="about-numbers">
+    <div class="stat">
+      <h3>{{ section.settings.stat_1_value }}</h3>
+      <p>{{ section.settings.stat_1_text }}</p>
+    </div>
+
+    <div class="stat">
+      <h3>{{ section.settings.stat_2_value }}</h3>
+      <p>{{ section.settings.stat_2_text }}</p>
+    </div>
+
+    <div class="stat">
+      <h3>{{ section.settings.stat_3_value }}</h3>
+      <p>{{ section.settings.stat_3_text }}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ===============================
+   ABOUT STATS SECTION
+================================ */
+.about-stats {
+  padding: 100px 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.about-head {
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+.about-dots {
+  letter-spacing: 4px;
+  color: #d0d0d0;
+  margin-bottom: 20px;
+}
+
+.about-head h2 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.about-head p {
+  font-size: 28px;
+  color: #6b6b6b;
+  line-height: 1.3;
+}
+
+/* ===============================
+   STATS
+================================ */
+.about-numbers {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+}
+
+.stat h3 {
+  font-size: 64px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.stat p {
+  font-size: 18px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .about-head h2 {
+    font-size: 40px;
+  }
+
+  .about-head p {
+    font-size: 20px;
+  }
+
+  .about-numbers {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .stat h3 {
+    font-size: 48px;
+  }
+}
+</style>

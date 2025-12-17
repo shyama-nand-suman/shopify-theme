@@ -1,0 +1,102 @@
+{% schema %}
+{
+  "name": "Careers Heading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Heading",
+      "default": "Careers"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Heading",
+      "default": "Every Infoscion is the navigator of our clients’ digital transformation"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Careers Heading"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="careers-heading">
+  <div class="careers-inner">
+
+    <!-- small decorative lines -->
+    <div class="careers-lines">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <h1>{{ section.settings.title }}</h1>
+
+    <p>{{ section.settings.subtitle }}</p>
+
+  </div>
+</section>
+
+<style>
+/* ===============================
+   CAREERS HEADING
+================================ */
+.careers-heading {
+  background: #ffffff;
+  padding: 120px 20px 140px;
+  text-align: center;
+}
+
+.careers-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* decorative lines */
+.careers-lines {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 30px;
+}
+
+.careers-lines span {
+  width: 6px;
+  height: 14px;
+  background: #dcdcdc;
+}
+
+/* heading */
+.careers-heading h1 {
+  font-size: 64px;
+  font-weight: 900;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+/* subtitle */
+.careers-heading p {
+  font-size: 28px;
+  line-height: 1.4;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .careers-heading {
+    padding: 80px 20px 100px;
+  }
+
+  .careers-heading h1 {
+    font-size: 40px;
+  }
+
+  .careers-heading p {
+    font-size: 20px;
+  }
+}
+</style>

@@ -1,0 +1,112 @@
+{% schema %}
+{
+  "name": "Latest News Intro",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Top small label",
+      "default": "LATEST UPDATES"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main heading",
+      "default": "Latest News"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Sub text",
+      "default": "At Infosys, it is imperative that our company affairs are managed in a fair and transparent manner."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Latest News (Animated Intro)"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="news-intro">
+  <div class="news-inner">
+    <span class="news-eyebrow">{{ section.settings.eyebrow }}</span>
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subtext }}</p>
+  </div>
+</section>
+
+<style>
+/* ===== SECTION ===== */
+.news-intro{
+  padding:140px 20px 120px;
+  background:#fff;
+  text-align:center;
+}
+
+/* INNER */
+.news-inner{
+  max-width:720px;
+  margin:auto;
+}
+
+/* EYEBROW */
+.news-eyebrow{
+  display:inline-block;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#aaa;
+  margin-bottom:18px;
+  opacity:0;
+  animation:fadeDown .8s ease forwards;
+}
+
+/* HEADING */
+.news-inner h2{
+  font-size:40px;
+  font-weight:700;
+  margin-bottom:18px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp .9s ease forwards;
+  animation-delay:.2s;
+}
+
+/* TEXT */
+.news-inner p{
+  font-size:18px;
+  line-height:1.6;
+  color:#777;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp .9s ease forwards;
+  animation-delay:.4s;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeDown{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .news-inner h2{
+    font-size:28px;
+  }
+
+  .news-inner p{
+    font-size:16px;
+  }
+}
+</style>

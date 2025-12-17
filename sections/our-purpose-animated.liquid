@@ -1,0 +1,158 @@
+{% schema %}
+{
+  "name": "Our Purpose",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Purpose:"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Purpose text",
+      "default": "To amplify human potential and create the next opportunity for people, businesses and communities"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Purpose (Animated)"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="purpose-wrap">
+  <div class="purpose-bg"></div>
+
+  <div class="purpose-box">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.content }}</p>
+  </div>
+</section>
+
+<style>
+/* ===== WRAPPER ===== */
+.purpose-wrap{
+  position:relative;
+  padding:120px 20px;
+  overflow:hidden;
+  background:#f7f7f7;
+}
+
+/* SUBTLE DIAGONAL PATTERN */
+.purpose-bg{
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(0,0,0,0.03) 0,
+      rgba(0,0,0,0.03) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+/* ===== BOX ===== */
+.purpose-box{
+  position:relative;
+  max-width:900px;
+  margin:auto;
+  padding:60px 70px;
+  background:#fff;
+  border:2px solid #4fa3ff;
+  clip-path:polygon(
+    3% 0,
+    100% 0,
+    100% 85%,
+    97% 100%,
+    0 100%,
+    0 15%
+  );
+
+  /* Animation */
+  opacity:0;
+  transform:translateY(40px) scale(.97);
+  animation:purposeReveal 1.2s ease forwards;
+}
+
+/* CORNER ACCENTS */
+.purpose-box::before,
+.purpose-box::after{
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  background:#fff;
+  border:2px solid #4fa3ff;
+}
+
+.purpose-box::before{
+  top:-10px;
+  left:-10px;
+}
+
+.purpose-box::after{
+  bottom:-10px;
+  right:-10px;
+}
+
+/* ===== TEXT ===== */
+.purpose-box h2{
+  font-size:34px;
+  margin-bottom:20px;
+  opacity:0;
+  transform:translateX(-20px);
+  animation:textSlide 0.8s ease forwards;
+  animation-delay:.4s;
+}
+
+.purpose-box p{
+  font-size:18px;
+  line-height:1.6;
+  max-width:720px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:textFade 0.8s ease forwards;
+  animation-delay:.6s;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes purposeReveal{
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes textSlide{
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+@keyframes textFade{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .purpose-box{
+    padding:40px 30px;
+  }
+
+  .purpose-box h2{
+    font-size:26px;
+  }
+
+  .purpose-box p{
+    font-size:16px;
+  }
+}
+</style>

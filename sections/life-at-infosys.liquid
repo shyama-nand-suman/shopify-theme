@@ -1,0 +1,196 @@
+{% schema %}
+{
+  "name": "Life at Infosys",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Image Label",
+      "default": "Life at Infosys"
+    },
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Quote",
+      "default": "I'm most excited about the opportunity to grow at Infosys."
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author Name",
+      "default": "Danielle, Infosys Indiana"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar",
+      "label": "Author Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Life at Infosys"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="life-infosys">
+  <div class="life-image-wrap">
+
+    {% if section.settings.bg_image %}
+      <img
+        src="{{ section.settings.bg_image | image_url: width: 2000 }}"
+        alt="Life at Infosys"
+        width="1200"
+        height="800"
+        class="life-bg"
+      >
+    {% endif %}
+
+    <span class="life-label">{{ section.settings.label }}</span>
+
+    <!-- TESTIMONIAL CARD -->
+    <div class="life-card">
+      <h4>WHAT OUR PEOPLE SAY</h4>
+
+      <div class="life-person">
+        {% if section.settings.avatar %}
+          <img
+            src="{{ section.settings.avatar | image_url: width: 200 }}"
+            alt="Person"
+            width="80"
+            height="80"
+          >
+        {% endif %}
+
+        <div class="life-text">
+          <p>“{{ section.settings.quote }}”</p>
+          <span>- {{ section.settings.author }}</span>
+        </div>
+      </div>
+
+      <div class="life-dots">
+        <span></span><span class="active"></span><span></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ===============================
+   LIFE AT INFOSYS
+================================ */
+.life-infosys {
+  padding: 80px 0;
+}
+
+.life-image-wrap {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* BACKGROUND IMAGE */
+.life-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+/* HOVER IMAGE MOVE (UP-DOWN / ZOOM) */
+.life-image-wrap:hover .life-bg {
+  transform: scale(1.08) translateY(-10px);
+}
+
+/* LEFT TEXT ON IMAGE */
+.life-label {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* TESTIMONIAL CARD */
+.life-card {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  background: #ffffff;
+  padding: 30px 32px;
+  width: 420px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.life-card h4 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* PERSON */
+.life-person {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.life-person img {
+  border-radius: 50%;
+}
+
+.life-text p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.life-text span {
+  font-size: 14px;
+  color: #555;
+}
+
+/* DOTS */
+.life-dots {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+}
+
+.life-dots span {
+  width: 8px;
+  height: 8px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.life-dots span.active {
+  background: #000;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 900px) {
+  .life-card {
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .life-label {
+    left: 20px;
+    bottom: 20px;
+  }
+}
+</style>

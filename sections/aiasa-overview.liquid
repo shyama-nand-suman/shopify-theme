@@ -1,0 +1,105 @@
+{% schema %}
+{
+  "name": "AIASA Overview",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Overview"
+    },
+    {
+      "type": "textarea",
+      "id": "left_text",
+      "label": "Left Column Text",
+      "default": "Businesses, like living beings, are constantly driven by their inherent instincts to survive, grow, sustain and flourish. The concept of an enterprise operating like a living, breathing organism has been explored for several decades now."
+    },
+    {
+      "type": "textarea",
+      "id": "right_text",
+      "label": "Right Column Text",
+      "default": "Today's market conditions can either stimulate enterprises to navigate to their next innovation, to their next advantage, to their next business model or wilt them to a premature demise. In such a dynamic market, we help our clients transform their organizations to become a thriving Live Enterprise."
+    }
+  ],
+  "presets": [
+    {
+      "name": "AIASA – Overview"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="aiasa-overview">
+  <div class="aiasa-overview-inner">
+
+    <h2 class="aiasa-overview-title">
+      {{ section.settings.title }}
+    </h2>
+
+    <div class="aiasa-overview-grid">
+      <div class="aiasa-overview-left">
+        <p>{{ section.settings.left_text }}</p>
+      </div>
+
+      <div class="aiasa-overview-right">
+        <p>{{ section.settings.right_text }}</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ===============================
+   AIASA OVERVIEW (INFOSYS STYLE)
+================================ */
+
+.aiasa-overview {
+  background: #ffffff;
+  padding: 120px 60px;
+}
+
+.aiasa-overview-inner {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.aiasa-overview-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #000;
+}
+
+.aiasa-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.aiasa-overview-left p,
+.aiasa-overview-right p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .aiasa-overview {
+    padding: 80px 25px;
+  }
+
+  .aiasa-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .aiasa-overview-title {
+    font-size: 28px;
+  }
+}
+</style>

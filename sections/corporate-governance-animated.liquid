@@ -1,0 +1,268 @@
+{% schema %}
+{
+  "name": "Corporate Governance",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Left heading",
+      "default": "Our corporate governance philosophy"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote text",
+      "default": "Good corporate governance is about maximizing shareholder value on a sustainable basis while ensuring fairness to all stakeholders: customers, vendor partners, investors, employees, government and society."
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author",
+      "default": "- N. R. Narayana Murthy"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Read more button text",
+      "default": "READ MORE"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Read more link"
+    },
+
+    {
+      "type": "text",
+      "id": "query_title",
+      "label": "Right box title",
+      "default": "For queries"
+    },
+    {
+      "type": "text",
+      "id": "person_name",
+      "label": "Contact name",
+      "default": "Jayesh Sanghrajka"
+    },
+    {
+      "type": "text",
+      "id": "designation",
+      "label": "Designation",
+      "default": "Chief Financial Officer"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "jayesh.sanghrajka@infosys.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "+91 80 2852 1705"
+    },
+    {
+      "type": "text",
+      "id": "contact_btn",
+      "label": "Contact button text",
+      "default": "CONTACT"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Corporate Governance (Animated)"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="gov-wrap">
+  <div class="gov-bg"></div>
+
+  <div class="gov-container">
+    
+    <!-- LEFT CONTENT -->
+    <div class="gov-left">
+      <h3>{{ section.settings.heading }}</h3>
+
+      <p class="gov-quote">
+        “{{ section.settings.quote }}”
+      </p>
+
+      <span class="gov-author">{{ section.settings.author }}</span>
+
+      {% if section.settings.btn_link != blank %}
+        <a href="{{ section.settings.btn_link }}" class="gov-btn">
+          {{ section.settings.btn_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="gov-card">
+      <div class="gov-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="18" stroke="black" stroke-width="2"/>
+          <circle cx="9" cy="9" r="2" stroke="black" stroke-width="2"/>
+          <circle cx="15" cy="9" r="2" stroke="black" stroke-width="2"/>
+          <path d="M7 15h10" stroke="black" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <h4>{{ section.settings.query_title }}</h4>
+
+      <p class="gov-person">
+        <strong>{{ section.settings.person_name }}</strong><br>
+        {{ section.settings.designation }}
+      </p>
+
+      <p class="gov-contact">
+        {{ section.settings.email }}<br>
+        {{ section.settings.phone }}
+      </p>
+
+      {% if section.settings.contact_link != blank %}
+        <a href="{{ section.settings.contact_link }}" class="gov-btn black">
+          {{ section.settings.contact_btn }}
+        </a>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ===== WRAPPER ===== */
+.gov-wrap{
+  position:relative;
+  padding:120px 20px;
+  overflow:hidden;
+  background:#f8f8f8;
+}
+
+/* DIAGONAL BACKGROUND */
+.gov-bg{
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(0,0,0,0.03) 0,
+      rgba(0,0,0,0.03) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+/* CONTAINER */
+.gov-container{
+  position:relative;
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:80px;
+  align-items:flex-start;
+}
+
+/* LEFT */
+.gov-left{
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 1s ease forwards;
+}
+
+.gov-left h3{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.gov-quote{
+  font-size:18px;
+  line-height:1.7;
+  color:#333;
+  max-width:520px;
+}
+
+.gov-author{
+  display:block;
+  margin:20px 0 40px;
+  font-size:14px;
+  color:#444;
+}
+
+/* BUTTON */
+.gov-btn{
+  display:inline-block;
+  border:2px solid #000;
+  padding:12px 32px;
+  text-decoration:none;
+  font-weight:600;
+  color:#000;
+  transition:.3s;
+}
+
+.gov-btn:hover{
+  background:#000;
+  color:#fff;
+}
+
+.gov-btn.black{
+  background:#000;
+  color:#fff;
+}
+
+/* RIGHT CARD */
+.gov-card{
+  background:#fff;
+  padding:40px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 1s ease forwards;
+  animation-delay:.3s;
+}
+
+.gov-card h4{
+  font-size:20px;
+  margin-bottom:16px;
+}
+
+.gov-person{
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.gov-contact{
+  font-size:14px;
+  margin-bottom:30px;
+}
+
+/* ICON */
+.gov-icon{
+  margin-bottom:20px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .gov-container{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+}
+</style>

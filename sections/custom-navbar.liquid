@@ -1,0 +1,104 @@
+{% schema %}
+{
+  "name": "Custom Navbar",
+  "settings": [],
+  "presets": [
+    { "name": "Custom Navbar" }
+  ]
+}
+{% endschema %}
+
+<!-- ========== TOP NAVBAR ========== -->
+<nav class="custom-top-navbar">
+  <div class="navbar-container">
+    <div class="nav-logo">
+      <a href="{{ shop.url }}">
+        <img 
+          src="https://cdn.shopify.com/s/files/1/0784/7388/7973/files/iga-swiatek-mobimg_91701cfb-90d1-435f-b1f7-9cfc8cbb1c71.avif?v=1765518562"
+          alt="{{ shop.name }}"
+          width="120"
+          height="50"
+        >
+      </a>
+    </div>
+
+    <ul class="nav-menu">
+    <li>
+  <a href="/pages/navigate-your-next#secound">
+    Navigate your next
+  </a>
+</li>
+
+<li>
+  <a href="/pages/tech-navigator-hero">
+    Infosys Knowledge Institute
+  </a>
+</li>
+
+<li>
+   <a href="/pages/investor-hero-image-slide/#investor-hero">
+    Invester
+  </a>
+</li>
+
+<li>
+  <a href="{{ routes.page_url | append: 'contact' }}">
+    Careers
+  </a>
+</li>
+
+    </ul>
+
+    <div class="nav-icons">
+      <span class="search-icon">🔍</span>
+     <span class="hamburger-icon" onclick="toggleMenu()">☰</span>
+
+    </div>
+  </div>
+</nav>
+
+
+<!-- ========== HERO SLIDER ========== -->
+<div class="hero-slider">
+
+  <div class="slide active" style="background-image:url('https://cdn.shopify.com/s/files/1/0784/7388/7973/files/iga-swiatek-mobimg_91701cfb-90d1-435f-b1f7-9cfc8cbb1c71.avif?v=1765518562');">
+    <div class="infosys-overlay">
+      <div class="left-lines"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="hero-left-content">
+        <h1 class="hero-heading">CHAMPIONS EVOLVE.</h1>
+        <p class="hero-sub">DIGITAL-FIRST | CLOUD-FIRST | AI-FIRST</p>
+        <a href="#" class="hero-btn">KNOW MORE</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0784/7388/7973/files/global-capability-centers-lead.avif?v=1765517503');">
+    <div class="infosys-overlay">
+      <div class="left-lines"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="hero-left-content">
+        <h1 class="hero-heading">TRANSFORM YOUR ENTERPRISE.</h1>
+        <p class="hero-sub">MODERNIZE | INNOVATE | SCALE</p>
+        <a href="#" class="hero-btn">DISCOVER</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0784/7388/7973/files/rapidly-cyber-attack_90d68784-1f9c-4047-a6cb-7c210f66859d.avif?v=1765525565');">
+    <div class="infosys-overlay">
+      <div class="left-lines"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="hero-left-content">
+        <h1 class="hero-heading">FUTURE ACCELERATED.</h1>
+        <p class="hero-sub">AI-FIRST | NEXT-GEN | AUTOMATION</p>
+        <a href="#" class="hero-btn">LEARN MORE</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+
+

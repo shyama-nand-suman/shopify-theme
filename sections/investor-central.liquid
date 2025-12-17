@@ -1,0 +1,181 @@
+{% schema %}
+{
+  "name": "Investor Central",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Left Image"
+    },
+    {
+      "type": "text",
+      "id": "image_text",
+      "label": "Image bottom text",
+      "default": "Integrated Annual Report 2025"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Right title",
+      "default": "Investor central"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Info Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Small label"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Main text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Investor Central",
+      "blocks": [
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section class="investor-central">
+  <!-- LEFT IMAGE -->
+  <div class="ic-image">
+    {% if section.settings.main_image %}
+      <img
+        src="{{ section.settings.main_image | image_url: width: 1800 }}"
+        alt="Investor image"
+        width="900"
+        height="600"
+      >
+    {% endif %}
+    <div class="ic-image-text">
+      {{ section.settings.image_text }}
+    </div>
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="ic-content">
+    <h2>{{ section.settings.title }}</h2>
+
+    <div class="ic-list">
+      {% for block in section.blocks %}
+        <div class="ic-item">
+          <span>{{ block.settings.label }}</span>
+          <strong>{{ block.settings.value }}</strong>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a href="#" class="ic-link">VIEW ALL</a>
+  </div>
+</section>
+
+<style>
+/* ================= INVESTOR CENTRAL ================= */
+.investor-central {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 40px;
+  padding: 80px 60px;
+  background: #fff;
+}
+
+/* LEFT IMAGE */
+.ic-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.ic-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.8s ease;
+}
+
+/* HOVER / CLICK ZOOM */
+.ic-image:hover img {
+  transform: scale(1.12);
+}
+
+.ic-image-text {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* RIGHT CONTENT */
+.ic-content {
+  padding-top: 20px;
+}
+
+.ic-content h2 {
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.ic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ic-item span {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.ic-item strong {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+}
+
+.ic-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #007c89;
+  text-decoration: none;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 900px) {
+  .investor-central {
+    grid-template-columns: 1fr;
+    padding: 50px 25px;
+  }
+
+  .ic-image-text {
+    font-size: 22px;
+  }
+
+  .ic-content h2 {
+    font-size: 34px;
+  }
+}
+</style>

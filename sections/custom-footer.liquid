@@ -1,0 +1,195 @@
+{% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Custom Footer"
+    }
+  ]
+}
+{% endschema %}
+
+<footer class="infosys-footer">
+  <div class="footer-top">
+
+    <!-- COLUMN 1 -->
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Navigate your next</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">ESG</a></li>
+        <li><a href="#">Investors</a></li>
+        <li><a href="#">Newsroom</a></li>
+        <li><a href="#">Alumni</a></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 2 -->
+    <div class="footer-col">
+      <h4>Subsidiaries</h4>
+      <ul>
+        <li><a href="#">EdgeVerve Systems</a></li>
+        <li><a href="#">Infosys BPM</a></li>
+        <li><a href="#">Infosys Consulting</a></li>
+        <li><a href="#">Infosys Public Services</a></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#">Infosys Foundation</a></li>
+        <li><a href="#">Infosys Foundation USA</a></li>
+        <li><a href="#">Infosys Science Foundation</a></li>
+        <li><a href="#">Infosys Leadership Institute</a></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 4 -->
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Privacy Statement</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Safe Harbour Provision</a></li>
+        <li><a href="#">Site Map</a></li>
+        <li><a href="#">Modern Slavery Statement</a></li>
+        <li><a href="#">Payment Guide for Suppliers</a></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 5 -->
+    <div class="footer-col">
+      <h4>Connect with us</h4>
+
+      <div class="footer-social">
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="YouTube">▶</a>
+      </div>
+
+      <select class="footer-select">
+        <option>Select Country/region</option>
+        <option>Australia</option>
+        <option>Austria</option>
+        <option>Belgium</option>
+        <option>Brazil</option>
+        <option>Canada</option>
+        <option>India</option>
+        <option>United States</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>Copyright © 2025 Infosys Limited</p>
+  </div>
+</footer>
+
+<style>
+/* ===============================
+   FOOTER
+================================ */
+.infosys-footer {
+  background: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  font-family: inherit;
+}
+
+.footer-top {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 60px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 60px;
+}
+
+.footer-col h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 14px;
+}
+
+.footer-col a {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
+  padding-bottom: 2px;
+  font-size: 15px;
+}
+
+.footer-col a:hover {
+  opacity: 0.7;
+}
+
+/* SOCIAL */
+.footer-social {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.footer-social a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #000;
+  border: none;
+}
+
+/* SELECT */
+.footer-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  border-top: 1px solid #e5e5e5;
+  padding: 25px 60px;
+  text-align: left;
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 1000px) {
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    padding: 50px 25px;
+  }
+
+  .footer-bottom {
+    padding: 20px 25px;
+  }
+}
+</style>

@@ -1,0 +1,138 @@
+{% schema %}
+{
+  "name": "Tech Navigator Hero",
+  "enabled_on": { "templates": ["page"] },
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Hero Slide",
+      "settings": [
+        { "type": "image_picker", "id": "bg_image", "label": "Background image" },
+        { "type": "text", "id": "top_label", "label": "Top label", "default": "Business Technology" },
+        { "type": "text", "id": "badge", "label": "Badge", "default": "REPORT" },
+        { "type": "textarea", "id": "heading", "label": "Main heading", "default": "Tech Navigator – Applying AI" },
+
+        { "type": "text", "id": "c1_title", "label": "Card 1 Title" },
+        { "type": "textarea", "id": "c1_desc", "label": "Card 1 Description" },
+        { "type": "url", "id": "c1_link", "label": "Card 1 Link" },
+
+        { "type": "text", "id": "c2_title", "label": "Card 2 Title" },
+        { "type": "textarea", "id": "c2_desc", "label": "Card 2 Description" },
+        { "type": "url", "id": "c2_link", "label": "Card 2 Link" },
+
+        { "type": "text", "id": "c3_title", "label": "Card 3 Title" },
+        { "type": "textarea", "id": "c3_desc", "label": "Card 3 Description" },
+        { "type": "url", "id": "c3_link", "label": "Card 3 Link" },
+
+        { "type": "text", "id": "c4_title", "label": "Card 4 Title" },
+        { "type": "textarea", "id": "c4_desc", "label": "Card 4 Description" },
+        { "type": "url", "id": "c4_link", "label": "Card 4 Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tech Navigator Hero",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+<section class="tn-hero" id="first">
+  <div class="tn-slider">
+    {% for block in section.blocks %}
+      <div class="tn-slide {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"
+        style="background-image:url({{ block.settings.bg_image | image_url: width: 2400 }})">
+
+        <div class="tn-overlay"></div>
+
+        <div class="tn-content">
+          <span class="tn-top">{{ block.settings.top_label }}</span>
+
+          <div class="tn-heading-wrap">
+            <span class="tn-badge">{{ block.settings.badge }}</span>
+            <h1>{{ block.settings.heading }}</h1>
+          </div>
+
+          <div class="tn-cards">
+            {% for i in (1..4) %}
+              {% assign t = "c" | append: i | append: "_title" %}
+              {% assign d = "c" | append: i | append: "_desc" %}
+              {% assign l = "c" | append: i | append: "_link" %}
+              {% if block.settings[t] != blank %}
+              <div class="tn-card">
+                <h4>{{ block.settings[t] }}</h4>
+                <p>{{ block.settings[d] }}</p>
+                {% if block.settings[l] != blank %}
+                  <a href="{{ block.settings[l] }}">Read more →</a>
+                {% endif %}
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Arrows -->
+  <button class="tn-arrow prev">‹</button>
+  <button class="tn-arrow next">›</button>
+
+  <!-- Dots -->
+  <div class="tn-dots">
+    {% for block in section.blocks %}
+      <span class="tn-dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.tn-hero{position:relative;height:90vh;color:#fff;overflow:hidden}
+.tn-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s}
+.tn-slide.active{opacity:1;z-index:1}
+.tn-overlay{position:absolute;inset:0;background:rgba(0,0,0,.75)}
+.tn-content{position:relative;z-index:2;max-width:1200px;margin:auto;padding:100px 40px}
+.tn-top{text-align:center;font-size:12px;margin-bottom:30px}
+.tn-badge{background:#0070f3;padding:4px 10px;font-size:11px;font-weight:700}
+.tn-heading-wrap h1{font-size:42px;margin:10px 0 50px}
+.tn-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tn-card{background:#fff;color:#000;padding:20px}
+.tn-card a{color:#0070f3;font-weight:600;text-decoration:none}
+.tn-arrow{position:absolute;top:50%;transform:translateY(-50%);background:#000;color:#fff;border:none;font-size:40px;padding:0 12px;cursor:pointer;z-index:3}
+.tn-arrow.prev{left:20px}
+.tn-arrow.next{right:20px}
+.tn-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
+.tn-dot{width:10px;height:10px;border-radius:50%;background:#999;cursor:pointer}
+.tn-dot.active{background:#fff}
+@media(max-width:900px){
+  .tn-cards{grid-template-columns:1fr}
+  .tn-heading-wrap h1{font-size:30px}
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  let slides=document.querySelectorAll(".tn-slide"),
+      dots=document.querySelectorAll(".tn-dot"),
+      i=0;
+
+  function show(n){
+    slides[i].classList.remove("active");
+    dots[i].classList.remove("active");
+    i=(n+slides.length)%slides.length;
+    slides[i].classList.add("active");
+    dots[i].classList.add("active");
+  }
+
+  document.querySelector(".tn-arrow.next").onclick=()=>show(i+1);
+  document.querySelector(".tn-arrow.prev").onclick=()=>show(i-1);
+  dots.forEach(d=>d.onclick=()=>show(+d.dataset.index));
+  setInterval(()=>show(i+1),5000);
+});
+</script>

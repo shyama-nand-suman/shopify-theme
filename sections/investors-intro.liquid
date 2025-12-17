@@ -1,0 +1,107 @@
+{% schema %}
+{
+  "name": "Investors Intro",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main heading",
+      "default": "Investors"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub heading",
+      "default": "Maximizing shareholder value with good corporate governance"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Investors Intro"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="investors-intro">
+  <div class="investors-inner">
+
+    <!-- top dotted line -->
+    <div class="investors-dots">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <h1>{{ section.settings.heading }}</h1>
+
+    <p>{{ section.settings.subheading }}</p>
+
+  </div>
+
+  <!-- bottom accent line -->
+  <div class="investors-bottom-line"></div>
+</section>
+
+<style>
+/* ================= INVESTORS INTRO ================= */
+.investors-intro {
+  background: #ffffff;
+  padding: 90px 20px 0;
+  text-align: center;
+}
+
+.investors-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* dotted line */
+.investors-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 25px;
+}
+
+.investors-dots span {
+  width: 3px;
+  height: 10px;
+  background: #cfcfcf;
+  display: inline-block;
+}
+
+/* heading */
+.investors-inner h1 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* subtitle */
+.investors-inner p {
+  font-size: 26px;
+  line-height: 1.4;
+  color: #777;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+/* bottom bar */
+.investors-bottom-line {
+  width: 100%;
+  height: 6px;
+  background: #007c89; /* Infosys-style teal */
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .investors-inner h1 {
+    font-size: 38px;
+  }
+
+  .investors-inner p {
+    font-size: 18px;
+  }
+}
+</style>

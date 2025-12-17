@@ -1,0 +1,114 @@
+{% schema %}
+{
+  "name": "Ring Opportunity Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ring the Sound of Opportunity, Move 1,000+1,000 Lives Forward"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "READ MORE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ring Opportunity Banner"
+    }
+  ]
+}
+{% endschema %}
+
+<section
+  class="ring-banner"
+  style="background-image:url('https://cdn.shopify.com/s/files/1/0784/7388/7973/files/launches-new-sonic-identity-lead-tab.avif?v=1765687993');"
+>
+  <div class="ring-overlay">
+    <div class="ring-content">
+      <h1>{{ section.settings.heading }}</h1>
+
+      {% if section.settings.btn_text != blank %}
+        <a href="{{ section.settings.btn_link }}" class="ring-btn">
+          {{ section.settings.btn_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+/* ===============================
+   RING OPPORTUNITY BANNER
+================================ */
+.ring-banner {
+  width: 100%;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center right;
+  position: relative;
+}
+
+.ring-overlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(10,20,60,0.85),
+    rgba(10,20,60,0.55),
+    rgba(10,20,60,0.2)
+  );
+  display: flex;
+  align-items: center;
+}
+
+.ring-content {
+  max-width: 800px;
+  padding: 60px;
+  color: #ffffff;
+}
+
+.ring-content h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.ring-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+.ring-btn:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .ring-content {
+    padding: 40px 25px;
+  }
+
+  .ring-content h1 {
+    font-size: 32px;
+  }
+}
+</style>
